@@ -8,6 +8,12 @@ Static site for [Priscilla Petty](https://www.priscillapetty.com). See [PAGES.md
 ./run.sh
 ```
 
+Archived (retired) pages with a sidebar viewer:
+
+```bash
+./run_archive.sh
+```
+
 ## Deploy
 
 This is a plain static HTML site — no build step required.

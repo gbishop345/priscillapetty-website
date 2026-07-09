@@ -66,15 +66,15 @@ Unique pages with content not duplicated elsewhere on the live site. Not linked 
 | `page24/` | Priscilla's Blog | `/` |
 | `page20/` | Harvard Business Review Article | `/` |
 
-## Retired PHP (kept, disconnected from site)
+### Preview archived pages locally
 
-These form handlers are not linked from the live site but are preserved in the repo under `php/`:
+```bash
+./run_archive.sh
+```
 
-- `php/page3/page3.php`, `php/page3/mailer.php` — old contact form
-- `php/page26/page26.php`, `php/page26/mailer.php` — DVD order form
-- `php/page43/page43.php`, `php/page43/ydss_formloomjr.php` — newer contact form
+Opens a sidebar viewer at `http://127.0.0.1:8090/` (default port). Select a page to preview it in an iframe. The archive server rewrites `../rw_common/` theme paths to `/assets/theme/` so styling loads correctly. Internal nav links on archived pages still point at old `pageXX` URLs and may not resolve — use the sidebar to switch pages.
 
-Live replacements: `contact/index.html`, `buy-dvd/index.html`. Old `.php` URLs redirect via `_redirects`.
+Old contact and DVD order forms were retired. Live replacements: `contact/index.html`, `buy-dvd/index.html`. Old `.php` URLs redirect via `_redirects`.
 
 ## Deleted duplicates
 

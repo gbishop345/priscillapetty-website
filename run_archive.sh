@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 HOST="${HOST:-127.0.0.1}"
-REQUESTED_PORT="${PORT:-8080}"
+REQUESTED_PORT="${PORT:-8090}"
 
 port_available() {
   python3 - "$HOST" "$1" <<'PY'
@@ -44,10 +44,11 @@ URL="http://${HOST}:${PORT}/"
 
 cd "$ROOT"
 
-echo "Priscilla Petty website — local dev server"
+echo "Priscilla Petty — archived pages viewer"
 echo "Directory: $ROOT"
 echo "URL:       $URL"
 echo ""
+echo "Use the sidebar to switch between retired pages."
 echo "Press Ctrl+C to stop."
 echo ""
 
@@ -55,9 +56,4 @@ if [[ "$(uname -s)" == "Darwin" ]] && [[ "${OPEN_BROWSER:-1}" == "1" ]]; then
   (sleep 0.5 && open "$URL") &
 fi
 
-if command -v python3 >/dev/null 2>&1; then
-  exec python3 -m http.server "$PORT" --bind "$HOST" --directory "$ROOT"
-else
-  echo "Error: install Python 3 to run a local server." >&2
-  exit 1
-fi
+exec python3 "$ROOT/scripts/archive_server.py" --host "$HOST" --port "$PORT"

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Archived Pages — Priscilla Petty</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --sidebar-width: 280px;
+      --bg: #f4f1ea;
+      --sidebar-bg: #2c3e50;
+      --sidebar-text: #ecf0f1;
+      --accent: #c9a227;
+      --border: #d8d2c4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+    }
+
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      min-width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      display: flex;
+      flex-direction: column;
+      border-right: 3px solid var(--accent);
+    }
+
+    .sidebar-header {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .sidebar-header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-header p {
+      margin: 0;
+      font-size: 0.82rem;
+      opacity: 0.75;
+      line-height: 1.4;
+    }
+
+    .page-list {
+      list-style: none;
+      margin: 0;
+      padding: 0.75rem 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .page-list li button {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0.85rem 1.5rem;
+      cursor: pointer;
+      border-left: 4px solid transparent;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .page-list li button:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .page-list li button.active {
+      background: rgba(201, 162, 39, 0.18);
+      border-left-color: var(--accent);
+      font-weight: bold;
+    }
+
+    .page-list .meta {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.65;
+      margin-top: 0.2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .preview {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .preview-toolbar {
+      padding: 0.65rem 1rem;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .preview-toolbar a {
+      color: #2c3e50;
+    }
+
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Archived Pages</h1>
+        <p>Retired content preserved in <code>_archive/</code>. Not on the live site.</p>
+      </div>
+      <ul class="page-list" id="page-list"></ul>
+    </aside>
+    <main class="preview">
+      <div class="preview-toolbar">
+        Viewing: <strong id="current-title">—</strong>
+        · <a id="open-direct" href="#" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+      <iframe id="preview" title="Archived page preview"></iframe>
+    </main>
+  </div>
+
+  <script>
+    const pages = [
+      {
+        id: "page17",
+        title: "Priscilla's Columns",
+        path: "/_archive/page17/page17.html",
+      },
+      {
+        id: "page18",
+        title: "Allain Philosophy & Quotes",
+        path: "/_archive/page18/page18.html",
+      },
+      {
+        id: "page24",
+        title: "Priscilla's Blog",
+        path: "/_archive/page24/page24.html",
+      },
+      {
+        id: "page20",
+        title: "Harvard Business Review Article",
+        path: "/_archive/page20/page20.html",
+      },
+    ];
+
+    const list = document.getElementById("page-list");
+    const iframe = document.getElementById("preview");
+    const titleEl = document.getElementById("current-title");
+    const openDirect = document.getElementById("open-direct");
+
+    function selectPage(page) {
+      history.replaceState(null, "", `#${page.id}`);
+      document.querySelectorAll(".page-list button").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.id === page.id);
+      });
+      iframe.src = page.path;
+      titleEl.textContent = page.title;
+      openDirect.href = page.path;
+    }
+
+    pages.forEach((page) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.dataset.id = page.id;
+      btn.innerHTML = `${page.title}<span class="meta">${page.path}</span>`;
+      btn.addEventListener("click", () => selectPage(page));
+      li.appendChild(btn);
+      list.appendChild(li);
+    });
+
+    const initial =
+      pages.find((page) => page.id === location.hash.slice(1)) || pages[0];
+    selectPage(initial);
+  </script>
+</body>
+</html>
