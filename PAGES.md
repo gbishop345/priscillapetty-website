@@ -50,7 +50,9 @@ Example: `https://media.priscillapetty.com/videos/deming/10_Deming_orchestra_ex_
 3. Upload the `videos` folder to your R2 bucket so keys match the URLs above.
 4. Bind the bucket to custom domain `media.priscillapetty.com` in Cloudflare.
 
-To refresh embed URLs after path changes: `./scripts/update_video_media_urls.py`
+To refresh embed URLs after path changes: `./scripts/update_video_embeds.py`
+
+Video posters (thumbnail shown while loading) live in `assets/images/video-posters/`. Regenerate with `./scripts/generate_video_posters.sh`.
 
 
 ## Archived (`_archive/`)
