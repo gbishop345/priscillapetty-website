@@ -1,0 +1,31 @@
+
+#stacks_in_103_page28 .stacks_left {
+	float:left;
+	width:61%;
+}
+
+#stacks_in_103_page28 .stacks_right {
+	float:right;
+	width:37%;
+}
+#stacks_out_107_page28 {
+	width: 97%;
+}
+
+#stacks_in_107_page28 {
+	margin: 3px 3px 3px 3px;
+	padding: 6px 6px 6px 6px;
+}
+
+#stacks_in_114_page28 {
+	padding: 1px 1px 1px 1px;
+}
+
+#stacks_out_116_page28 {
+	width: 78%;
+}
+
+#stacks_in_120_page28 {
+	margin: 2px 2px 2px 2px;
+	padding: 5px 5px 5px 5px;
+}

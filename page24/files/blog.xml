@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+	<channel>
+<title>My RSS Feed</title><link>http://www.priscillapetty.com/index.html</link><description>Priscilla&#x27;s Blog</description><dc:language>en</dc:language><dc:creator>priscilla@priscillapetty.com</dc:creator><dc:rights>Copyright 2009 Priscilla Petty</dc:rights><dc:date>2009-05-11T22:32:34-04:00</dc:date><admin:generatorAgent rdf:resource="http://www.realmacsoftware.com/" />
+<admin:errorReportsTo rdf:resource="mailto:priscilla@priscillapetty.com" /><sy:updatePeriod>hourly</sy:updatePeriod>
+<sy:updateFrequency>1</sy:updateFrequency>
+<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>
+<lastBuildDate>Fri, 22 May 2009 23:02:08 -0400</lastBuildDate><item><title></title><dc:creator>priscilla@priscillapetty.com</dc:creator><category>None</category><dc:date>2009-05-11T22:32:34-04:00</dc:date><link>http://www.priscillapetty.com/page24/page24.html#unique-entry-id-2</link><guid isPermaLink="true">http://www.priscillapetty.com/page24/page24.html#unique-entry-id-2</guid><content:encoded><![CDATA[]]></content:encoded></item></channel>
+</rss>

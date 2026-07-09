@@ -1,0 +1,52 @@
+# Video files (host separately on Cloudflare R2/Stream or upload outside git)
+*.mov
+*.mp4
+*.avi
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.m4v
+*.mpeg
+*.mpg
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Backup and temp files
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Broken legacy symlink from old hosting (points to /home/analog/...)
+stats
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Cloudflare local dev
+.wrangler/
+.dev.vars
+
+# Dependencies (if you add a build step later)
+node_modules/
+
+# Editor/IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
