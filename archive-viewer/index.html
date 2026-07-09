@@ -125,6 +125,70 @@
       border: none;
       background: #fff;
     }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh;
+      }
+
+      .sidebar {
+        border-bottom: 3px solid var(--accent);
+        border-right: none;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .sidebar-header {
+        padding: 0.75rem 1rem 0.65rem;
+      }
+
+      .sidebar-header h1 {
+        font-size: 1rem;
+      }
+
+      .sidebar-header p {
+        font-size: 0.75rem;
+      }
+
+      .page-list {
+        display: flex;
+        flex: none;
+        overflow-x: auto;
+        padding: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .page-list li {
+        flex: 0 0 210px;
+      }
+
+      .page-list li button {
+        border-bottom: 4px solid transparent;
+        border-left: none;
+        min-height: 60px;
+        padding: 0.65rem 1rem;
+      }
+
+      .page-list li button.active {
+        border-bottom-color: var(--accent);
+        border-left-color: transparent;
+      }
+
+      .preview {
+        min-height: 0;
+      }
+
+      .preview-toolbar {
+        font-size: 0.78rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      iframe {
+        min-height: 0;
+      }
+    }
   </style>
 </head>
 <body>

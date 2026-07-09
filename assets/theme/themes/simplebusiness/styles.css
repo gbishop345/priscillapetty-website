@@ -469,7 +469,9 @@ ul.blog-tag-cloud li {
 
 .blog-entry-summary {
 	margin-bottom: 10px;
-}.blog-archive-headings-wrapper {
+}
+
+.blog-archive-headings-wrapper {
 	margin-bottom: 25px;
 }
 
@@ -477,13 +479,17 @@ ul.blog-tag-cloud li {
 }
 
 .blog-archive-entries-wrapper .blog-entry {
-}.blog-archive-month {
+}
+
+.blog-archive-month {
 	font-size: 1.6em;
 	color: #21536a;
 }
 
 .blog-archive-link {
-}.blog-archive-link a:link, .blog-archive-link a:visited {
+}
+
+.blog-archive-link a:link, .blog-archive-link a:visited {
 }
 	
 /* @end */
@@ -924,9 +930,13 @@ p.exif-user-comment {
 .movie-page-title {
 	font-size: 1.6em;
 	color: #21536a;
-}.movie-page-description {
+}
+
+.movie-page-description {
 	margin-bottom: 10px;
-}.movie-thumbnail-frame {
+}
+
+.movie-thumbnail-frame {
 	border: Solid 1px #cccccc;
 	padding: 1px;
 	float: left;
@@ -962,6 +972,189 @@ p.exif-user-comment {
 
 }
 	
+/* @end */
+
+
+/* @group Responsive layout */
+
+.mobile-nav-toggle {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	html {
+		box-sizing: border-box;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	*, *::before, *::after {
+		box-sizing: inherit;
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+
+	#sidebarContainer {
+		border-bottom: 1px solid #c3c3c3;
+		float: none;
+		position: static;
+		text-align: left;
+		width: 100%;
+	}
+
+	#container {
+		margin: 0;
+		padding: 0 16px;
+		padding-left: max(16px, env(safe-area-inset-left));
+		padding-right: max(16px, env(safe-area-inset-right));
+	}
+
+	#pageHeader {
+		padding-top: 10px;
+	}
+
+	#pageHeader img {
+		display: block;
+		float: none;
+		height: auto;
+		margin: 0 auto 8px;
+		max-width: 100%;
+	}
+
+	#contentContainer #content {
+		overflow-wrap: anywhere;
+		padding: 16px 0 20px;
+	}
+
+	.mobile-nav-toggle {
+		align-items: center;
+		background: url(images/button_normal.jpg) repeat-x;
+		border: 0;
+		border-bottom: 1px solid #c3c3c3;
+		color: #21536a;
+		cursor: pointer;
+		display: flex;
+		font: bold 1em 'Lucida Grande', LucidaGrande, Lucida, Helvetica, Arial, sans-serif;
+		justify-content: space-between;
+		min-height: 44px;
+		padding: 10px 16px;
+		padding-left: max(16px, env(safe-area-inset-left));
+		padding-right: max(16px, env(safe-area-inset-right));
+		text-align: left;
+		text-shadow: 0px 1px 0px #ffffff;
+		width: 100%;
+	}
+
+	.mobile-nav-toggle:hover,
+	#sidebarContainer.nav-open .mobile-nav-toggle {
+		background: url(images/button_over.jpg) repeat-x;
+	}
+
+	.mobile-nav-toggle::after {
+		content: "\2630";
+		font-size: 1.35rem;
+		font-weight: normal;
+		line-height: 1;
+	}
+
+	#sidebarContainer.nav-open .mobile-nav-toggle::after {
+		content: "\00d7";
+		font-size: 1.7rem;
+	}
+
+	.mobile-nav-enabled #navcontainer {
+		display: none;
+	}
+
+	.mobile-nav-enabled #sidebarContainer.nav-open #navcontainer {
+		display: block;
+	}
+
+	#navcontainer ul {
+		width: 100%;
+	}
+
+	#navcontainer a {
+		height: auto;
+		min-height: 44px;
+		padding-top: 11px;
+		padding-bottom: 11px;
+		padding-left: max(5px, env(safe-area-inset-left));
+		padding-right: max(5px, env(safe-area-inset-right));
+	}
+
+	#navcontainer ul ul a {
+		text-indent: 20px;
+	}
+
+	img,
+	video,
+	iframe,
+	object,
+	embed,
+	.imageStyle {
+		height: auto;
+		max-width: 100%;
+	}
+
+	video {
+		aspect-ratio: 425 / 344;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+	}
+
+	table {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+	}
+
+	.stacks_left,
+	.stacks_right,
+	.stacks_middle,
+	.stacks_float_left,
+	.stacks_float_right {
+		float: none !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		width: 100% !important;
+	}
+
+	.stacks_float_left .imageStyle,
+	.stacks_float_right .imageStyle {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.stacks_out {
+		max-width: 100%;
+		overflow: visible;
+	}
+
+	[id^="stacks_out_"] {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		width: 100% !important;
+	}
+
+	.photo-navigation,
+	.photo-frame,
+	.exif-data {
+		left: auto;
+		position: static;
+		top: auto;
+		width: auto;
+	}
+
+	#footer,
+	#breadcrumbcontainer {
+		overflow-wrap: anywhere;
+	}
+}
+
 /* @end */
 
 

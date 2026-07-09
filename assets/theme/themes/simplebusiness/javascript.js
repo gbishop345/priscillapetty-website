@@ -441,3 +441,123 @@ function QT_WriteOBJECT_XHTML()
 }
 
 
+/*
+ * Responsive navigation for modern mobile browsers.
+ * Desktop DOM and layout are left unchanged.
+ */
+(function () {
+	var sidebar;
+	var navigation;
+	var button;
+	var mobileViewport;
+	var active = false;
+
+	function closeMenu() {
+		if (!sidebar) {
+			return;
+		}
+		sidebar.classList.remove("nav-open");
+		if (button) {
+			button.setAttribute("aria-expanded", "false");
+		}
+	}
+
+	function onToggleClick() {
+		var isOpen = sidebar.classList.toggle("nav-open");
+		button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	}
+
+	function onNavigationClick(event) {
+		if (event.target.closest && event.target.closest("a")) {
+			closeMenu();
+		}
+	}
+
+	function onDocumentKeydown(event) {
+		if (event.key === "Escape" && sidebar.classList.contains("nav-open")) {
+			closeMenu();
+			button.focus();
+		}
+	}
+
+	function enableMobileNavigation() {
+		if (active) {
+			return;
+		}
+
+		sidebar = document.getElementById("sidebarContainer");
+		navigation = document.getElementById("navcontainer");
+		if (!sidebar || !navigation) {
+			return;
+		}
+
+		var navigationId = navigation.id || "navcontainer";
+		navigation.id = navigationId;
+
+		button = document.createElement("button");
+		button.type = "button";
+		button.className = "mobile-nav-toggle";
+		button.setAttribute("aria-controls", navigationId);
+		button.setAttribute("aria-expanded", "false");
+		button.appendChild(document.createTextNode("Menu"));
+		sidebar.insertBefore(button, navigation);
+		document.body.classList.add("mobile-nav-enabled");
+
+		button.addEventListener("click", onToggleClick);
+		navigation.addEventListener("click", onNavigationClick);
+		document.addEventListener("keydown", onDocumentKeydown);
+
+		active = true;
+		closeMenu();
+	}
+
+	function disableMobileNavigation() {
+		if (!active) {
+			return;
+		}
+
+		closeMenu();
+		document.body.classList.remove("mobile-nav-enabled");
+
+		if (button) {
+			button.removeEventListener("click", onToggleClick);
+			if (button.parentNode) {
+				button.parentNode.removeChild(button);
+			}
+			button = null;
+		}
+
+		if (navigation) {
+			navigation.removeEventListener("click", onNavigationClick);
+		}
+
+		document.removeEventListener("keydown", onDocumentKeydown);
+		active = false;
+	}
+
+	function syncMenuState(event) {
+		if (event.matches) {
+			enableMobileNavigation();
+		} else {
+			disableMobileNavigation();
+		}
+	}
+
+	function initMobileNavigation() {
+		mobileViewport = window.matchMedia("(max-width: 768px)");
+		syncMenuState(mobileViewport);
+		if (mobileViewport.addEventListener) {
+			mobileViewport.addEventListener("change", syncMenuState);
+		} else if (mobileViewport.addListener) {
+			mobileViewport.addListener(syncMenuState);
+		}
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initMobileNavigation);
+	} else {
+		initMobileNavigation();
+	}
+}());
+
+
