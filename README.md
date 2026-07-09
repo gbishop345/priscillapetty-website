@@ -1,29 +1,7 @@
-# priscillapetty-website
+# Priscilla Petty Website
 
-Static site for [Priscilla Petty](https://www.priscillapetty.com). See [PAGES.md](PAGES.md) for page structure.
+Official website for [Priscilla Petty](https://www.priscillapetty.com) and Petty Consulting Productions.
 
-## Local preview
+The site covers Priscilla’s work on W. Edwards Deming, total quality management, and business leadership — including articles, interviews, quotes, and video from *The Deming of America* and related projects.
 
-```bash
-./run.sh
-```
-
-Archived (retired) pages with a sidebar viewer:
-
-```bash
-./run_archive.sh
-```
-
-## Deploy
-
-This is a plain static HTML site — no build step required.
-
-To deploy on Cloudflare Pages, connect this GitHub repo as a new Pages project:
-
-| Setting | Value |
-|---------|--------|
-| Framework preset | None |
-| Build command | *(empty)* |
-| Build output directory | `/` |
-
-Cloudflare will serve the files directly from the repo. Old URLs are handled by [`_redirects`](_redirects).
+Live site: **https://www.priscillapetty.com**
