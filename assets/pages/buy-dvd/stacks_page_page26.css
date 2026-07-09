@@ -1,0 +1,35 @@
+
+#stacks_out_38_page26 {
+	width: 96%;
+}
+
+#stacks_in_38_page26 {
+	background-color: #D8E3FF;
+	border: solid #DA0910;
+	border-width: 4px 4px 4px 4px;
+	margin: 2px 2px 2px 2px;
+	padding: 5px 5px 5px 5px;
+}
+
+#stacks_in_40_page26 {
+	margin: 2px 2px 2px 2px;
+	padding: 5px 5px 5px 5px;
+}
+
+#stacks_in_42_page26 .stacks_left {
+	float:left;
+	width:61%;
+}
+
+#stacks_in_42_page26 .stacks_right {
+	float:right;
+	width:37%;
+}
+#stacks_in_47_page26 {
+	padding: 1px 1px 1px 1px;
+}
+
+#stacks_in_42_page26 {
+	margin: 2px 2px 2px 2px;
+	padding: 5px 5px 5px 5px;
+}

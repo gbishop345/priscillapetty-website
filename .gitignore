@@ -1,4 +1,9 @@
-# Video files (host separately on Cloudflare R2/Stream or upload outside git)
+# Local
+.git
+.wrangler
+.DS_Store
+
+# Video media (hosted on Cloudflare R2; HTML pages under videos/ are tracked)
 *.mov
 *.mp4
 *.avi
@@ -11,7 +16,6 @@
 *.mpg
 
 # macOS
-.DS_Store
 .AppleDouble
 .LSOverride
 ._*
@@ -39,7 +43,6 @@ stats
 !.env.example
 
 # Cloudflare local dev
-.wrangler/
 .dev.vars
 
 # Dependencies (if you add a build step later)
