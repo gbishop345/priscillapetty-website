@@ -33,75 +33,7 @@ Entry point: [`index.html`](index.html)
 | `assets/theme/` | RapidWeaver theme (formerly `rw_common/`) |
 | `assets/pages/` | Per-page Stacks CSS/JS |
 | `assets/images/` | Per-section images |
-| `videos/` | Video **pages** (HTML, tracked in git) + `.mov` media (gitignored, served from R2) |
-
-## Video hosting (Cloudflare R2)
-
-Video **pages** deploy with the site. Video **files** (`.mov`) are stored in R2 and served at the same URLs the HTML already uses (e.g. `/videos/deming/1_Deming_adv-comp.mov`).
-
-### How it works
-
-```
-Browser → /videos/deming/01/          → static HTML (Pages)
-Browser → /videos/deming/foo.mov      → Pages Function → R2 bucket
-```
-
-- [`functions/videos/[[path]].js`](functions/videos/[[path]].js) — fetches `.mov` files from R2 with range-request support
-- [`wrangler.jsonc`](wrangler.jsonc) — Pages config (`pages_build_output_dir`) + R2 binding (`VIDEOS` → `priscillapetty-videos`)
-- [`videos/manifest.json`](videos/manifest.json) — list of all 17 video files and their R2 keys
-- [`scripts/upload_videos_r2.sh`](scripts/upload_videos_r2.sh) — one-command upload script
-
-### Deploy (GitHub → Cloudflare Pages)
-
-**Dashboard** (Settings → Builds):
-
-| Setting | Value |
-|---------|--------|
-| Deploy command | `npm run deploy` |
-
-If deploy fails with `Authentication error [code: 10000]`, add `CLOUDFLARE_API_TOKEN` (with **Pages → Edit** permission) and `CLOUDFLARE_ACCOUNT_ID` to the project's environment variables. See [README.md](README.md).
-
-**R2 binding** (Settings → Functions): `VIDEOS` → `priscillapetty-videos`
-
-### One-time Cloudflare setup
-
-1. **Create the R2 bucket** (Dashboard → R2 → Create bucket, or CLI):
-   ```bash
-   npx wrangler r2 bucket create priscillapetty-videos
-   ```
-
-2. **R2 binding** is declared in [`wrangler.jsonc`](wrangler.jsonc) (`VIDEOS` → `priscillapetty-videos`). Wrangler applies it on deploy.
-
-3. **Upload videos** (from a machine that has the `.mov` files locally):
-   ```bash
-   npx wrangler login
-   ./scripts/upload_videos_r2.sh
-   ```
-
-4. **Deploy** the site (push to GitHub, or manually):
-   ```bash
-   npx wrangler pages deploy
-   ```
-
-5. **Verify** in browser:
-   - `https://<your-domain>/videos/deming/01/` — page loads
-   - `https://<your-domain>/videos/deming/1_Deming_adv-comp.mov` — video file returns 200
-
-### R2 key layout
-
-Object keys match the URL path after `/videos/`:
-
-| Local file | R2 key |
-|------------|--------|
-| `videos/deming/1_Deming_adv-comp.mov` | `deming/1_Deming_adv-comp.mov` |
-| `videos/petersen/Petersen1_....mov` | `petersen/Petersen1_....mov` |
-
-No HTML changes needed when uploading — paths are already root-absolute.
-
-### Local dev
-
-[`run.sh`](run.sh) serves `.mov` files directly from disk when they exist under `videos/`. R2 is only used in production.
-
+| `videos/` | Video pages (HTML in git) + `.mov` media (gitignored) |
 
 ## Archived (`_archive/`)
 
@@ -142,7 +74,7 @@ These were removed from the repo entirely (live versions remain). Bookmarks are 
 ./run.sh
 ```
 
-Videos (`.mov`) are gitignored. They must exist on disk under `videos/` for playback during local preview. In production, upload them to R2 — see **Video hosting (Cloudflare R2)** above.
+Video files (`.mov`) are gitignored. Place them under `videos/` on disk for local playback.
 
 ## Migration
 

@@ -1,9 +1,8 @@
 # Local
 .git
-.wrangler
 .DS_Store
 
-# Video media (hosted on Cloudflare R2; HTML pages under videos/ are tracked)
+# Video media (HTML pages under videos/ are tracked; .mov files stay out of git)
 *.mov
 *.mp4
 *.avi
@@ -41,12 +40,6 @@ stats
 .env
 .env.*
 !.env.example
-
-# Cloudflare local dev
-.dev.vars
-
-# Dependencies (if you add a build step later)
-node_modules/
 
 # Editor/IDE
 .idea/
