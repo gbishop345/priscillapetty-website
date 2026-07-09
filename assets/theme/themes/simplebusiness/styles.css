@@ -1051,7 +1051,8 @@ p.exif-user-comment {
 		cursor: pointer;
 		display: flex;
 		font: bold 1em 'Lucida Grande', LucidaGrande, Lucida, Helvetica, Arial, sans-serif;
-		justify-content: space-between;
+		gap: 0.65rem;
+		justify-content: flex-start;
 		line-height: 1.2;
 		margin: 0;
 		min-height: 44px;
@@ -1069,16 +1070,17 @@ p.exif-user-comment {
 		background-size: 100% 100%;
 	}
 
-	.mobile-nav-toggle::after {
+	.mobile-nav-toggle::before {
 		content: "\2630";
+		flex: 0 0 auto;
 		font-size: 1.35rem;
 		font-weight: normal;
 		line-height: 1;
 	}
 
-	#sidebarContainer.nav-open .mobile-nav-toggle::after {
+	#sidebarContainer.nav-open .mobile-nav-toggle::before {
 		content: "\00d7";
-		font-size: 1.7rem;
+		font-size: 1.5rem;
 	}
 
 	.mobile-nav-enabled #navcontainer {
