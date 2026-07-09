@@ -983,6 +983,7 @@ p.exif-user-comment {
 
 @media screen and (max-width: 768px) {
 	html {
+		background: #ffffff;
 		box-sizing: border-box;
 		-webkit-text-size-adjust: 100%;
 	}
@@ -992,19 +993,29 @@ p.exif-user-comment {
 	}
 
 	body {
+		background: #ffffff;
+		background-image: none;
 		overflow-x: hidden;
 	}
 
 	#sidebarContainer {
+		background: #ffffff;
 		border-bottom: 1px solid #c3c3c3;
 		float: none;
+		max-width: 100%;
 		position: static;
 		text-align: left;
 		width: 100%;
 	}
 
+	#sidebarContainer #sidebar {
+		display: none;
+	}
+
 	#container {
+		background: #ffffff;
 		margin: 0;
+		max-width: 100%;
 		padding: 0 16px;
 		padding-left: max(16px, env(safe-area-inset-left));
 		padding-right: max(16px, env(safe-area-inset-right));
@@ -1029,14 +1040,20 @@ p.exif-user-comment {
 
 	.mobile-nav-toggle {
 		align-items: center;
-		background: url(images/button_normal.jpg) repeat-x;
+		-webkit-appearance: none;
+		appearance: none;
+		background: url(images/button_normal.jpg) no-repeat;
+		background-size: 100% 100%;
 		border: 0;
 		border-bottom: 1px solid #c3c3c3;
+		border-radius: 0;
 		color: #21536a;
 		cursor: pointer;
 		display: flex;
 		font: bold 1em 'Lucida Grande', LucidaGrande, Lucida, Helvetica, Arial, sans-serif;
 		justify-content: space-between;
+		line-height: 1.2;
+		margin: 0;
 		min-height: 44px;
 		padding: 10px 16px;
 		padding-left: max(16px, env(safe-area-inset-left));
@@ -1048,7 +1065,8 @@ p.exif-user-comment {
 
 	.mobile-nav-toggle:hover,
 	#sidebarContainer.nav-open .mobile-nav-toggle {
-		background: url(images/button_over.jpg) repeat-x;
+		background: url(images/button_over.jpg) no-repeat;
+		background-size: 100% 100%;
 	}
 
 	.mobile-nav-toggle::after {
@@ -1065,6 +1083,8 @@ p.exif-user-comment {
 
 	.mobile-nav-enabled #navcontainer {
 		display: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	.mobile-nav-enabled #sidebarContainer.nav-open #navcontainer {
@@ -1072,16 +1092,35 @@ p.exif-user-comment {
 	}
 
 	#navcontainer ul {
+		margin: 0;
+		padding: 0;
 		width: 100%;
 	}
 
+	#navcontainer li {
+		margin: 0;
+		padding: 0;
+	}
+
 	#navcontainer a {
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		box-sizing: border-box;
+		display: block;
 		height: auto;
+		line-height: 1.2;
+		margin: 0;
 		min-height: 44px;
-		padding-top: 11px;
-		padding-bottom: 11px;
+		padding: 9px 5px;
 		padding-left: max(5px, env(safe-area-inset-left));
 		padding-right: max(5px, env(safe-area-inset-right));
+	}
+
+	#navcontainer a:hover,
+	#navcontainer #current,
+	#navcontainer .currentAncestor {
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 	}
 
 	#navcontainer ul ul a {
