@@ -1,6 +1,6 @@
 /**
  * Serve video files from R2 at /videos/<key>.
- * Static HTML under videos/ is served from Workers Assets; .mov files come from R2.
+ * HTML pages under videos/ are static; .mov files are served from R2.
  */
 
 const VIDEO_TYPES = {
@@ -9,12 +9,18 @@ const VIDEO_TYPES = {
   webm: "video/webm",
 };
 
-function isVideoPath(pathname) {
-  const ext = pathname.split(".").pop()?.toLowerCase();
+function isVideoKey(key) {
+  const ext = key.split(".").pop()?.toLowerCase();
   return ext && ext in VIDEO_TYPES;
 }
 
-async function serveVideo(request, env, key) {
+export async function onRequest({ request, env, params }) {
+  const key = decodeURIComponent(params.path || "");
+
+  if (!key || !isVideoKey(key)) {
+    return new Response("Not found", { status: 404 });
+  }
+
   if (!env.VIDEOS) {
     return new Response(
       "Video storage not configured. Bind R2 bucket VIDEOS in wrangler.jsonc.",
@@ -51,17 +57,3 @@ async function serveVideo(request, env, key) {
 
   return new Response(object.body, { status, headers });
 }
-
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const { pathname } = url;
-
-    if (pathname.startsWith("/videos/") && isVideoPath(pathname)) {
-      const key = decodeURIComponent(pathname.slice("/videos/".length));
-      return serveVideo(request, env, key);
-    }
-
-    return env.ASSETS.fetch(request);
-  },
-};

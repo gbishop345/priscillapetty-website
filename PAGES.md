@@ -42,17 +42,16 @@ Video **pages** deploy with the site. Video **files** (`.mov`) are stored in R2 
 ### How it works
 
 ```
-Browser → /videos/deming/01/          → static HTML (Workers Assets)
-Browser → /videos/deming/foo.mov      → Worker → R2 bucket
+Browser → /videos/deming/01/          → static HTML (Pages)
+Browser → /videos/deming/foo.mov      → Pages Function → R2 bucket
 ```
 
-- [`worker/index.js`](worker/index.js) — fetches `.mov` files from R2 with range-request support (seeking/scrubbing)
-- [`wrangler.jsonc`](wrangler.jsonc) — Workers + static assets config; R2 binding (`VIDEOS` → `priscillapetty-videos`)
-- [`.assetsignore`](.assetsignore) — excludes `.mov` files and dev cruft from the static upload
+- [`functions/videos/[[path]].js`](functions/videos/[[path]].js) — fetches `.mov` files from R2 with range-request support
+- [`wrangler.jsonc`](wrangler.jsonc) — Pages config (`pages_build_output_dir`) + R2 binding (`VIDEOS` → `priscillapetty-videos`)
 - [`videos/manifest.json`](videos/manifest.json) — list of all 17 video files and their R2 keys
 - [`scripts/upload_videos_r2.sh`](scripts/upload_videos_r2.sh) — one-command upload script
 
-### Deploy (GitHub → Cloudflare)
+### Deploy (GitHub → Cloudflare Pages)
 
 Pushes to GitHub trigger automatic deploys when the repo is connected in the Cloudflare dashboard.
 
@@ -60,17 +59,15 @@ Pushes to GitHub trigger automatic deploys when the repo is connected in the Clo
 
 | Setting | Value |
 |---------|--------|
-| Build command | *(empty — no build step)* |
-| Deploy command | `npx wrangler deploy` |
+| Build command | `npm install` |
+| Deploy command | `npx wrangler pages deploy` |
 
-Worker name in dashboard must match `wrangler.jsonc` → `"name": "priscillapetty-website"`.
-
-Custom domains and R2 binding are in [`wrangler.jsonc`](wrangler.jsonc). Legacy URLs use [`_redirects`](_redirects).
+Project name must match `wrangler.jsonc` → `"name": "priscillapetty-website"`.
 
 ```bash
-npm install          # first time only
+npm install
 npx wrangler login   # manual deploy only
-npx wrangler deploy
+npx wrangler pages deploy
 ```
 
 ### One-time Cloudflare setup
@@ -88,9 +85,9 @@ npx wrangler deploy
    ./scripts/upload_videos_r2.sh
    ```
 
-4. **Deploy** the site:
+4. **Deploy** the site (push to GitHub, or manually):
    ```bash
-   npx wrangler deploy
+   npx wrangler pages deploy
    ```
 
 5. **Verify** in browser:

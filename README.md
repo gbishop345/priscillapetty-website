@@ -8,43 +8,34 @@ Static site for [Priscilla Petty](https://www.priscillapetty.com). See [PAGES.md
 ./run.sh
 ```
 
-Serves the site from disk (including local `.mov` files under `videos/`).
+## Deploy (GitHub → Cloudflare Pages)
 
-## Deploy (GitHub → Cloudflare)
-
-This repo deploys as a **Cloudflare Worker** with static assets. Pushes to GitHub trigger an automatic build when the repo is connected in the Cloudflare dashboard.
+This project is a **Cloudflare Pages** site connected to GitHub. Pushes trigger automatic deploys.
 
 ### Cloudflare dashboard settings
 
-In **Workers & Pages** → **priscillapetty-website** → **Settings** → **Builds**:
+**Workers & Pages** → **priscillapetty-website** → **Settings** → **Builds**:
 
 | Setting | Value |
 |---------|--------|
-| Git repository | `gbishop345/priscillapetty-website` (or your fork) |
-| Production branch | `main` |
-| Root directory | `/` (repo root) |
-| Build command | *(leave empty — static site, no build step)* |
-| Deploy command | `npx wrangler deploy` |
+| Build command | `npm install` |
+| Deploy command | `npx wrangler pages deploy` |
 
-The Worker name in the dashboard **must match** `"name"` in [`wrangler.jsonc`](wrangler.jsonc): `priscillapetty-website`.
+Project name in `wrangler.jsonc` must match the Pages project name: `priscillapetty-website`.
 
-Custom domains (`priscillapetty.com`, `www.priscillapetty.com`) are declared in `wrangler.jsonc` and applied on each deploy. `_redirects` at the repo root handles legacy URL redirects.
+Custom domain is configured in the Pages dashboard. R2 binding for videos is in `wrangler.jsonc`. Legacy URLs use `_redirects`.
 
 ### Manual deploy
 
 ```bash
 npm install
 npx wrangler login
-npx wrangler deploy
+npx wrangler pages deploy
 ```
 
 ### Videos (R2)
-
-Video files are not in git. Upload once to R2:
 
 ```bash
 npx wrangler r2 bucket create priscillapetty-videos   # first time only
 ./scripts/upload_videos_r2.sh
 ```
-
-The R2 binding is configured in `wrangler.jsonc` (`VIDEOS` → `priscillapetty-videos`).

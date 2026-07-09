@@ -1,28 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "priscillapetty-website",
-  "main": "worker/index.js",
   "compatibility_date": "2026-07-09",
-  "workers_dev": true,
+  "pages_build_output_dir": ".",
   "observability": {
     "enabled": true
   },
-  "assets": {
-    "directory": ".",
-    "binding": "ASSETS"
-  },
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  "routes": [
-    {
-      "pattern": "priscillapetty.com",
-      "custom_domain": true
-    },
-    {
-      "pattern": "www.priscillapetty.com",
-      "custom_domain": true
-    }
   ],
   "r2_buckets": [
     {
