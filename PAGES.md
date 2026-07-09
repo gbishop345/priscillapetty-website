@@ -42,35 +42,56 @@ Video **pages** deploy with the site. Video **files** (`.mov`) are stored in R2 
 ### How it works
 
 ```
-Browser → /videos/deming/01/          → static HTML from Pages
-Browser → /videos/deming/foo.mov      → Pages Function → R2 bucket
+Browser → /videos/deming/01/          → static HTML (Workers Assets)
+Browser → /videos/deming/foo.mov      → Worker → R2 bucket
 ```
 
-- [`functions/videos/[[path]].js`](functions/videos/[[path]].js) — fetches `.mov` files from R2 with range-request support (seeking/scrubbing)
-- [`wrangler.toml`](wrangler.toml) — R2 bucket binding (`VIDEOS` → `priscillapetty-videos`)
+- [`worker/index.js`](worker/index.js) — fetches `.mov` files from R2 with range-request support (seeking/scrubbing)
+- [`wrangler.jsonc`](wrangler.jsonc) — Workers + static assets config; R2 binding (`VIDEOS` → `priscillapetty-videos`)
+- [`.assetsignore`](.assetsignore) — excludes `.mov` files and dev cruft from the static upload
 - [`videos/manifest.json`](videos/manifest.json) — list of all 17 video files and their R2 keys
 - [`scripts/upload_videos_r2.sh`](scripts/upload_videos_r2.sh) — one-command upload script
+
+### Deploy (GitHub → Cloudflare)
+
+Pushes to GitHub trigger automatic deploys when the repo is connected in the Cloudflare dashboard.
+
+**Dashboard settings** (Workers & Pages → priscillapetty-website → Settings → Builds):
+
+| Setting | Value |
+|---------|--------|
+| Build command | *(empty — no build step)* |
+| Deploy command | `npx wrangler deploy` |
+
+Worker name in dashboard must match `wrangler.jsonc` → `"name": "priscillapetty-website"`.
+
+Custom domains and R2 binding are in [`wrangler.jsonc`](wrangler.jsonc). Legacy URLs use [`_redirects`](_redirects).
+
+```bash
+npm install          # first time only
+npx wrangler login   # manual deploy only
+npx wrangler deploy
+```
 
 ### One-time Cloudflare setup
 
 1. **Create the R2 bucket** (Dashboard → R2 → Create bucket, or CLI):
    ```bash
-   wrangler r2 bucket create priscillapetty-videos
+   npx wrangler r2 bucket create priscillapetty-videos
    ```
 
-2. **Bind R2 to Pages** (Dashboard → Pages → your project → Settings → Functions → R2 bucket bindings):
-   - Variable name: `VIDEOS`
-   - R2 bucket: `priscillapetty-videos`
-
-   Or rely on [`wrangler.toml`](wrangler.toml) if your Pages project reads it on deploy.
+2. **R2 binding** is declared in [`wrangler.jsonc`](wrangler.jsonc) (`VIDEOS` → `priscillapetty-videos`). Wrangler applies it on deploy.
 
 3. **Upload videos** (from a machine that has the `.mov` files locally):
    ```bash
-   wrangler login
+   npx wrangler login
    ./scripts/upload_videos_r2.sh
    ```
 
-4. **Deploy** the site (push to GitHub as usual). Video pages and the R2 function deploy together.
+4. **Deploy** the site:
+   ```bash
+   npx wrangler deploy
+   ```
 
 5. **Verify** in browser:
    - `https://<your-domain>/videos/deming/01/` — page loads

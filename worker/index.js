@@ -1,7 +1,6 @@
 /**
  * Serve video files from R2 at /videos/<key>.
- * HTML pages under videos/ (e.g. /videos/deming/01/) are static assets from Pages.
- * Only media requests (.mov, .mp4, .webm) reach this function.
+ * Static HTML under videos/ is served from Workers Assets; .mov files come from R2.
  */
 
 const VIDEO_TYPES = {
@@ -10,21 +9,15 @@ const VIDEO_TYPES = {
   webm: "video/webm",
 };
 
-function isVideoKey(key) {
-  const ext = key.split(".").pop()?.toLowerCase();
+function isVideoPath(pathname) {
+  const ext = pathname.split(".").pop()?.toLowerCase();
   return ext && ext in VIDEO_TYPES;
 }
 
-export async function onRequest({ request, env, params }) {
-  const key = decodeURIComponent(params.path || "");
-
-  if (!key || !isVideoKey(key)) {
-    return new Response("Not found", { status: 404 });
-  }
-
+async function serveVideo(request, env, key) {
   if (!env.VIDEOS) {
     return new Response(
-      "Video storage not configured. Bind R2 bucket VIDEOS in Pages settings.",
+      "Video storage not configured. Bind R2 bucket VIDEOS in wrangler.jsonc.",
       { status: 503, headers: { "content-type": "text/plain" } },
     );
   }
@@ -58,3 +51,17 @@ export async function onRequest({ request, env, params }) {
 
   return new Response(object.body, { status, headers });
 }
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const { pathname } = url;
+
+    if (pathname.startsWith("/videos/") && isVideoPath(pathname)) {
+      const key = decodeURIComponent(pathname.slice("/videos/".length));
+      return serveVideo(request, env, key);
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};
