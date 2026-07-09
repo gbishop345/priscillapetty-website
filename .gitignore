@@ -50,3 +50,6 @@ node_modules/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+.dev.vars*
+!.dev.vars.example
