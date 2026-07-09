@@ -53,23 +53,15 @@ Browser → /videos/deming/foo.mov      → Pages Function → R2 bucket
 
 ### Deploy (GitHub → Cloudflare Pages)
 
-Pushes to GitHub trigger automatic deploys when the repo is connected in the Cloudflare dashboard.
-
-**Dashboard settings** (Workers & Pages → priscillapetty-website → Settings → Builds):
+**Dashboard** (Settings → Builds):
 
 | Setting | Value |
 |---------|--------|
-| Root directory | `/` (repo root) |
-| Build command | *(leave empty)* |
-| Deploy command | `npx wrangler pages deploy` |
+| Deploy command | `npm run deploy` |
 
-Project name must match `wrangler.jsonc` → `"name": "priscillapetty-website"`.
+If deploy fails with `Authentication error [code: 10000]`, add `CLOUDFLARE_API_TOKEN` (with **Pages → Edit** permission) and `CLOUDFLARE_ACCOUNT_ID` to the project's environment variables. See [README.md](README.md).
 
-```bash
-npm install
-npx wrangler login   # manual deploy only
-npx wrangler pages deploy
-```
+**R2 binding** (Settings → Functions): `VIDEOS` → `priscillapetty-videos`
 
 ### One-time Cloudflare setup
 

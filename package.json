@@ -5,7 +5,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "deploy": "wrangler pages deploy",
+    "deploy": "wrangler pages deploy . --project-name=priscillapetty-website --commit-dirty=true",
     "dev": "wrangler pages dev ."
   },
   "devDependencies": {
