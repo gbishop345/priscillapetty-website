@@ -59,7 +59,8 @@ Pushes to GitHub trigger automatic deploys when the repo is connected in the Clo
 
 | Setting | Value |
 |---------|--------|
-| Build command | `npm install` |
+| Root directory | `/` (repo root) |
+| Build command | *(leave empty)* |
 | Deploy command | `npx wrangler pages deploy` |
 
 Project name must match `wrangler.jsonc` → `"name": "priscillapetty-website"`.
