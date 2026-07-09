@@ -33,7 +33,25 @@ Entry point: [`index.html`](index.html)
 | `assets/theme/` | RapidWeaver theme (formerly `rw_common/`) |
 | `assets/pages/` | Per-page Stacks CSS/JS |
 | `assets/images/` | Per-section images |
-| `videos/` | Video pages (HTML in git) + `.mov` media (gitignored) |
+| `videos/` | Video pages (HTML in git) + `.mp4` media on R2 at `media.priscillapetty.com` |
+
+## Video hosting (Cloudflare R2)
+
+Video **pages** deploy with the main site. Video **files** (`.mp4`) are stored in R2 and served from:
+
+`https://media.priscillapetty.com/videos/<subdir>/<filename>.mp4`
+
+Example: `https://media.priscillapetty.com/videos/deming/10_Deming_orchestra_ex_of_optimization.mp4`
+
+### Upload to R2 (Cyberduck)
+
+1. Run `./scripts/convert_videos_mp4.sh` if you need `.mp4` from `.mov` sources.
+2. Run `./scripts/prepare_r2_upload.sh` to build `r2-upload/videos/`.
+3. Upload the `videos` folder to your R2 bucket so keys match the URLs above.
+4. Bind the bucket to custom domain `media.priscillapetty.com` in Cloudflare.
+
+To refresh embed URLs after path changes: `./scripts/update_video_media_urls.py`
+
 
 ## Archived (`_archive/`)
 
@@ -74,7 +92,7 @@ These were removed from the repo entirely (live versions remain). Bookmarks are 
 ./run.sh
 ```
 
-Video files (`.mov`) are gitignored. Place them under `videos/` on disk for local playback.
+Video files (`.mov` / `.mp4`) are gitignored. Production videos are served from `https://media.priscillapetty.com/videos/...` (Cloudflare R2). For local preview, place `.mp4` files under `videos/` on disk, or temporarily point embeds at the media URL.
 
 ## Migration
 

@@ -2,6 +2,9 @@
 .git
 .DS_Store
 
+# Local R2 upload staging (symlinks to .mov files)
+r2-upload/
+
 # Video media (HTML pages under videos/ are tracked; .mov files stay out of git)
 *.mov
 *.mp4
