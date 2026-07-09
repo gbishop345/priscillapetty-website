@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import unquote
 
 MEDIA_ORIGIN = "https://media.priscillapetty.com"
 
@@ -20,13 +20,10 @@ SRC_PATTERN = re.compile(
 
 
 def poster_path(media_path: str) -> str:
-    """/videos/deming/foo.mp4 -> /assets/images/video-posters/deming/foo.jpg"""
-    rel = media_path.removeprefix("/videos/")
+    """/videos/deming/foo%204.mp4 -> /assets/images/video-posters/deming/foo%204.jpg"""
+    rel = unquote(media_path.removeprefix("/videos/"))
     stem = rel.rsplit(".", 1)[0]
-    # URL-encode only the filename segment for paths with spaces
-    parts = stem.split("/")
-    parts[-1] = quote(parts[-1])
-    return "/assets/images/video-posters/" + "/".join(parts) + ".jpg"
+    return "/assets/images/video-posters/" + stem.replace(" ", "%20") + ".jpg"
 
 
 def video_block(media_url: str, poster: str) -> str:
@@ -64,7 +61,7 @@ def main() -> None:
             continue
 
         html.write_text(new_text, encoding="utf-8")
-        print(f"Updated: {html.relative_to(root)}")
+        print(f"Updated: {html.relative_to(root)} -> {poster}")
         updated += 1
 
     print(f"\nDone. Updated {updated} page(s).")
