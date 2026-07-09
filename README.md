@@ -18,9 +18,11 @@ This project is a **Cloudflare Pages** site connected to GitHub. Pushes trigger 
 
 | Setting | Value |
 |---------|--------|
-| Root directory | `/` (repo root — must contain `package.json` and `wrangler.jsonc`) |
+| Root directory | `/` (repo root) |
 | Build command | *(leave empty)* |
 | Deploy command | `npx wrangler pages deploy` |
+
+Node **22** is required (set in `.node-version`). Cloudflare auto-installs dependencies before deploy.
 
 Project name in `wrangler.jsonc` must match the Pages project name: `priscillapetty-website`.
 

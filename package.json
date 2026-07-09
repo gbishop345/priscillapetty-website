@@ -2,7 +2,7 @@
   "name": "priscillapetty-website",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "deploy": "wrangler pages deploy",
