@@ -1,97 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd'
-  xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'><url>
-<loc>http://www.priscillapetty.com/index.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page26/page26.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page27/page27.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page28/page28.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page43/page43.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page50/page50.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page50/page51/page51.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page42/page42.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page42/page45/page45.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page42/page24/page24.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page21/page21.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page22/page22.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page23/page23.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page29/page29.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page30/page30.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page31/page31.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page32/page32.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page33/page33.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page34/page34.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page35/page35.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page36/page36.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page38/page38.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page39/page39.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page37/page37.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page40/page40.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page41/page41.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page48/page48.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page49/page49.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page46/page46.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page47/page47.html</loc>
-</url>
-<url>
-<loc>http://www.priscillapetty.com/page16/page16.html</loc>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.priscillapetty.com/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/about/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/buy-dvd/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/contact/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/deming-of-america/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/deming/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/have-your-say/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/links/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/quotes/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/quotes/artzt/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/quotes/gale/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/sitemap/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/special-reports/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/thoughts/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/thoughts/part-2/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/01/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/02/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/03/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/04/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/05/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/06/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/07/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/08/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/09/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/10/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/deming/11/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/kearns/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/petersen/01/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/petersen/02/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/petersen/03/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/petersen/04/</loc>
+  </url>
+  <url>
+    <loc>https://www.priscillapetty.com/videos/stempel/</loc>
+  </url>
 </urlset>

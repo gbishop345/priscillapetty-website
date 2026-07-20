@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /_archive/
+Disallow: /archive-viewer/
+Disallow: /scripts/
+Disallow: /r2-upload/
+Disallow: /assets/pages/sitemap/sitemap.xml
+
+Sitemap: https://www.priscillapetty.com/sitemap.xml

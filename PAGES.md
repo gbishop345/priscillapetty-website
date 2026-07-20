@@ -96,6 +96,14 @@ These were removed from the repo entirely (live versions remain). Bookmarks are 
 
 Video files (`.mov` / `.mp4`) are gitignored. Production videos are served from `https://media.priscillapetty.com/videos/...` (Cloudflare R2). For local preview, place `.mp4` files under `videos/` on disk, or temporarily point embeds at the media URL.
 
+## SEO / crawl
+
+- Canonical host: `https://www.priscillapetty.com`
+- XML sitemap: [`sitemap.xml`](sitemap.xml) (live pages only)
+- Robots: [`robots.txt`](robots.txt)
+- Cache/security headers: [`_headers`](_headers)
+- Re-apply metadata/landmarks helper: [`scripts/apply_seo.py`](scripts/apply_seo.py)
+
 ## Migration
 
 One-time migration script: [`scripts/migrate_structure.py`](scripts/migrate_structure.py)

@@ -63,7 +63,8 @@ img {
 	margin-right: 10px;
 }
 
-#pageHeader h1 {
+#pageHeader h1,
+#pageHeader .site-brand {
 	font: bold 2em 'Lucida Grande', LucidaGrande, Lucida, Helvetica, Arial, sans-serif;
 	margin: 10px 0 0px;
 	color: #21536a;
@@ -1216,3 +1217,50 @@ p.exif-user-comment {
 /* @end */
 
 
+
+
+/* SEO / accessibility helpers (no visual change in normal layout) */
+#pageHeader .site-brand {
+	display: block;
+	margin: 10px 0 0px;
+	padding: 0;
+}
+
+.visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 10000;
+	padding: 8px 12px;
+	background: #21536a;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+	left: 8px;
+	top: 8px;
+}
+
+footer#footer,
+nav#navcontainer,
+nav#breadcrumbcontainer,
+header#pageHeader,
+main#contentContainer {
+	/* landmark tags keep existing IDs; ensure block layout like former divs */
+	display: block;
+}
