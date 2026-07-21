@@ -49,3 +49,8 @@ stats
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
