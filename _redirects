@@ -11,9 +11,30 @@
 /page14/page14.html  /videos/kearns/  301
 /page15/page15.html  /videos/stempel/  301
 
+# Flat early video/section aliases (bookmarks without nested path)
+/page1.html  /videos/deming/01/  301
+/page2.html  /videos/deming/02/  301
+/page4.html  /videos/deming/03/  301
+/page5.html  /videos/petersen/01/  301
+/page6.html  /videos/deming/04/  301
+/page7.html  /deming-of-america/  301
+/page8.html  /deming/  301
+/page9.html  /about/  301
+/page10.html  /videos/deming/05/  301
+/page11.html  /videos/deming/06/  301
+/page12.html  /videos/deming/07/  301
+/page13.html  /videos/petersen/02/  301
+/page14.html  /videos/kearns/  301
+/page15.html  /videos/stempel/  301
+/page17.html  /  301
+/page18.html  /  301
+/page20.html  /  301
+/page24.html  /  301
+
 # Section duplicates (old site era → current site era)
 /page3/page3.html  /contact/  301
 /page3/page3.php  /contact/  301
+/page3.html  /contact/  301
 /page7/page7.html  /deming-of-america/  301
 /page8/page8.html  /deming/  301
 /page9/page9.html  /about/  301
@@ -35,9 +56,9 @@
 /page42/page45/page45.html  /quotes/gale/  301
 /page26/buy-dvd.html  /buy-dvd/  301
 /page16/page16.html  /sitemap/  301
-/page21/page21.html  /have-your-say/  301
-/page22/page22.html  /special-reports/  301
-/page23/page23.html  /links/  301
+/page21/page21.html  /contact/  301
+/page22/page22.html  /  301
+/page23/page23.html  /  301
 /page26/page26.html  /about/  301
 /page27/page27.html  /deming/  301
 /page28/page28.html  /deming-of-america/  301
@@ -63,9 +84,9 @@
 /page47/page47.html  /videos/stempel/  301
 /buy-dvd.html  /buy-dvd/  301
 /page16.html  /sitemap/  301
-/page21.html  /have-your-say/  301
-/page22.html  /special-reports/  301
-/page23.html  /links/  301
+/page21.html  /contact/  301
+/page22.html  /  301
+/page23.html  /  301
 /page26.html  /about/  301
 /page27.html  /deming/  301
 /page28.html  /deming-of-america/  301
@@ -92,3 +113,12 @@
 /page46.html  /videos/kearns/  301
 /page47.html  /videos/stempel/  301
 /index.html  /  301
+/test.html  /  301
+
+# Retired placeholder sections
+/have-your-say/  /contact/  301
+/have-your-say/index.html  /contact/  301
+/special-reports/  /  301
+/special-reports/index.html  /  301
+/links/  /  301
+/links/index.html  /  301

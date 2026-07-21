@@ -20,7 +20,7 @@ SRC_PATTERN = re.compile(
 
 def video_block(url: str) -> str:
     return f"""              <div align="center">
-                <video width="425" height="344" controls autoplay playsinline>
+                <video width="425" height="344" playsinline preload="metadata">
                   <source src="{url}" type="video/mp4" />
                 </video>
               </div><!-- End of Quicktime Stack -->"""

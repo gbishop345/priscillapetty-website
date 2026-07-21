@@ -31,7 +31,6 @@ def video_block(media_url: str, poster: str) -> str:
                 <video
                   width="425"
                   height="344"
-                  controls
                   playsinline
                   preload="metadata"
                   poster="{poster}">

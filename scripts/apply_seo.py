@@ -23,7 +23,15 @@ PAGES: dict[str, dict] = {
         "title": "Priscilla Petty | The Deming of America &amp; Quality Leadership",
         "description": (
             "Priscilla Petty is producer and on-camera interviewer for The Deming of America, "
-            "sharing W. Edwards Deming’s management philosophy through video, writing, and consulting."
+            "sharing Deming Video clips on Quality and W. Edwards Deming’s management philosophy "
+            "through video, writing, and consulting."
+        ),
+        "keywords": (
+            "Priscilla Petty, Prisilla Petty, Pricilla Petty, Priscilla Petty website, "
+            "Deming Video, Deming, Quality, W. Edwards Deming, total quality, TQM, "
+            "Total Quality Management, Quality Management, The Deming of America, "
+            "Petty Consulting Productions, Edwin L. Artzt, Oliver M. Gale, P&amp;G, "
+            "Procter &amp; Gamble"
         ),
         "og_type": "website",
         "og_image": DEFAULT_OG_IMAGE,
@@ -96,32 +104,6 @@ PAGES: dict[str, dict] = {
         "schema": "article",
         "breadcrumbs": [("Home", "/"), ("The Deming of America", "/deming-of-america/")],
     },
-    "/have-your-say/": {
-        "file": "have-your-say/index.html",
-        "title": "Have Your Say | Priscilla Petty Reader Responses",
-        "description": (
-            "Share thoughts and responses with Priscilla Petty on Deming, quality management, "
-            "leadership, and The Deming of America."
-        ),
-        "og_type": "website",
-        "og_image": DEFAULT_OG_IMAGE,
-        "h1": "Have Your Say",
-        "schema": "webpage",
-        "breadcrumbs": [("Home", "/"), ("Have Your Say", "/have-your-say/")],
-    },
-    "/links/": {
-        "file": "links/index.html",
-        "title": "Links | Deming, Quality & Leadership Resources",
-        "description": (
-            "Curated links related to W. Edwards Deming, quality management, and resources "
-            "recommended by Priscilla Petty."
-        ),
-        "og_type": "website",
-        "og_image": DEFAULT_OG_IMAGE,
-        "h1": "Links",
-        "schema": "webpage",
-        "breadcrumbs": [("Home", "/"), ("Links", "/links/")],
-    },
     "/quotes/": {
         "file": "quotes/index.html",
         "title": "Quotes: P&G Leaders | Edwin L. Artzt & Oliver M. Gale",
@@ -181,19 +163,6 @@ PAGES: dict[str, dict] = {
         "h1": "Site Map",
         "schema": "webpage",
         "breadcrumbs": [("Home", "/"), ("Site Map", "/sitemap/")],
-    },
-    "/special-reports/": {
-        "file": "special-reports/index.html",
-        "title": "Special Reports | Priscilla Petty",
-        "description": (
-            "Special reports and featured writing from Priscilla Petty on leadership, "
-            "quality, and Deming-related topics."
-        ),
-        "og_type": "website",
-        "og_image": DEFAULT_OG_IMAGE,
-        "h1": "Special Reports",
-        "schema": "webpage",
-        "breadcrumbs": [("Home", "/"), ("Special Reports", "/special-reports/")],
     },
     "/thoughts/": {
         "file": "thoughts/index.html",
@@ -504,6 +473,23 @@ def replace_title_and_inject_meta(html: str, url: str, meta: dict) -> str:
         count=1,
         flags=re.S,
     )
+    keywords = meta.get("keywords")
+    if keywords:
+        keywords_tag = (
+            '  <meta name="keywords"\n'
+            '        content=\n'
+            f'        "{keywords}" />'
+        )
+        html, keyword_count = re.subn(
+            r'<meta name="keywords"\s+content=\s*"[^"]*"\s*/>',
+            keywords_tag,
+            html,
+            count=1,
+            flags=re.S,
+        )
+        if keyword_count == 0:
+            head_block = build_head_block(url, meta)
+            html = html.replace(head_block, head_block + "\n" + keywords_tag, 1)
     # Remove duplicate description if any leftover from partial runs
     # (title replacement already embeds description once)
 
@@ -981,7 +967,7 @@ main#contentContainer {
 
 def main() -> None:
     add_video_pages()
-    assert len(PAGES) == 32, f"expected 32 pages, got {len(PAGES)}"
+    assert len(PAGES) == 29, f"expected 29 pages, got {len(PAGES)}"
     generate_webp()
     patch_theme_css()
     write_robots()

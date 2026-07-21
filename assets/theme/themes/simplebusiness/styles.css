@@ -1264,3 +1264,86 @@ main#contentContainer {
 	/* landmark tags keep existing IDs; ensure block layout like former divs */
 	display: block;
 }
+
+/* External video play control (left of clip on wider viewports) */
+.video-player {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	gap: 14px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+}
+
+.video-play-toggle {
+	background: #21536a;
+	border: 1px solid #17394a;
+	border-radius: 4px;
+	color: #ffffff;
+	cursor: pointer;
+	flex: 0 0 auto;
+	font: bold 14px 'Lucida Grande', LucidaGrande, Lucida, Helvetica, Arial, sans-serif;
+	line-height: 1.2;
+	margin-top: 0.35em;
+	min-width: 4.5em;
+	padding: 0.55em 0.85em;
+}
+
+.video-play-toggle:hover,
+.video-play-toggle:focus {
+	background: #ffa000;
+	border-color: #cc8000;
+	color: #ffffff;
+	outline: none;
+}
+
+.video-play-toggle:focus-visible {
+	outline: 2px solid #21536a;
+	outline-offset: 2px;
+}
+
+.video-player-media {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.video-player-media video {
+	display: block;
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.video-player {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.video-play-toggle {
+		align-self: flex-start;
+		margin-top: 0;
+	}
+
+	.video-player-media {
+		width: 100%;
+	}
+}
+
+/* Slightly larger clip listings with space between rows */
+.clip-list {
+	line-height: 1.95;
+	margin-bottom: 0.55em;
+}
+
+.clip-list,
+.clip-list span,
+.clip-list a,
+.clip-list em {
+	font-size: 16px !important;
+}
+
+.clip-list span[style*="font-weight:bold"] {
+	font-size: 18px !important;
+}

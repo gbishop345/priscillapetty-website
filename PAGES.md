@@ -17,10 +17,9 @@ Entry point: [`index.html`](index.html)
 | `quotes/` | Quotes: P&G Leaders | `/quotes/` |
 | `quotes/artzt/` | Edwin L. Artzt | `/quotes/artzt/` |
 | `quotes/gale/` | Oliver M. Gale | `/quotes/gale/` |
-| `have-your-say/` | Have Your Say | `/have-your-say/` |
-| `special-reports/` | Special Reports | `/special-reports/` |
-| `links/` | Links | `/links/` |
 | `sitemap/` | Site Map | `/sitemap/` |
+
+Retired empty placeholders (301 via [`_redirects`](_redirects)): `/have-your-say/` → `/contact/`; `/special-reports/` and `/links/` → `/`.
 | `videos/deming/01/`–`11/` | Deming Videos 1–11 | `/videos/deming/01/` … `/videos/deming/11/` |
 | `videos/petersen/01/`–`04/` | Don Petersen Videos 1–4 | `/videos/petersen/01/` … `/videos/petersen/04/` |
 | `videos/kearns/` | David Kearns Video | `/videos/kearns/` |
@@ -86,7 +85,8 @@ These were removed from the repo entirely (live versions remain). Bookmarks are 
 - `page8` (old Deming) → `/deming/`
 - `page9` (old About) → `/about/`
 - `page19/` (old P&G quotes) → `/quotes/` and subpages
-- `test.html` (hosting placeholder)
+- `test.html` (hosting placeholder) → `/`
+- `have-your-say/`, `special-reports/`, `links/` (empty placeholders) → `/contact/` or `/`
 
 ## Local dev
 
